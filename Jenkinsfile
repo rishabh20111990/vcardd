@@ -11,7 +11,7 @@ node('maven-label') {
    stage('Build') {
       // Run the maven build
       if (isUnix()) {
-         sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
+         sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package sonar:sonar -Dsonar.host.url=http://ec2-54-196-119-180.compute-1.amazonaws.com:9000/"
       } else {
          bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean package/)
       }
