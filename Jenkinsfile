@@ -6,7 +6,7 @@ node('maven-label') {
       // Get the Maven tool.
       // ** NOTE: This 'M3' Maven tool must be configured
       // **       in the global configuration.           
-      mvnHome = "/usr/share/maven"
+      mvnHome = "/usr/share/maven3"
    }
    stage('Build') {
       // Run the maven build
