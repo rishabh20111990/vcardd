@@ -1,17 +1,17 @@
-node('maven-label') {
+node('jenkin-slave') {
    def mvnHome
    stage('Preparation') { // for display purposes
       // Get some code from a GitHub repository
-      git 'https://github.com/randd-1/vcard.git'
+      git 'https://github.com/rishabh20111990/vcardd.git'
       // Get the Maven tool.
       // ** NOTE: This 'M3' Maven tool must be configured
       // **       in the global configuration.           
-      mvnHome = "/usr/share/maven3"
+      mvnHome = "/home/rishabh/maven"
    }
    stage('Build') {
       // Run the maven build
       if (isUnix()) {
-         sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package sonar:sonar -Dsonar.host.url=http://ec2-54-196-119-180.compute-1.amazonaws.com:9000/"
+         sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
       } else {
          bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean package/)
       }
